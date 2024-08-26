@@ -1,37 +1,45 @@
-import { Col, Row } from 'antd';
+"use client";
+import { Row } from 'antd';
 import sudoku from 'sudoku-umd';
 import style from './gameBoard.module.css'
+import CustomCell from './CustomCell';
+
 
 interface SectionProps {
     level: string; 
   }
 
 const GameBoard:React.FC<SectionProps> = ({level}) => {
-   
-  let sudokuString = sudoku.generate(level)
 
-  let solve = sudoku.solve(sudokuString)
+
+   
+  let initialSudoku:string = sudoku.generate(level)
+  let solvedSudoku:string = sudoku.solve(initialSudoku)
+
+ 
 
     return (
         <div className={style.containerStyle}>
         {[...Array(9)].map((_, rowIndex) => (
           <Row gutter={[0, 0]} key={rowIndex}>
              {[...Array(9)].map((_, colIndex) => {
-            const cellValue = sudokuString[rowIndex * 9 + colIndex];
+            const index = rowIndex * 9 + colIndex;
+            const cellValue = initialSudoku[index]
+            const correctValue = solvedSudoku[index]
             return (
-              <Col span={2.67} key={colIndex}>
-                <div className={style.gridStyle}>
-                  {cellValue === '.' ? '' : cellValue}
-                </div>
-              </Col>
+              <CustomCell
+              key={colIndex}
+              cellValue={cellValue}   
+              correctValue={correctValue}          
+              />
             );
           })}
           </Row>
         ))}
 
-        {sudokuString}
+        {initialSudoku}
         <br />
-        {solve}
+        {solvedSudoku}
       </div>
         
     );
