@@ -1,11 +1,12 @@
 "use client";
-import GameBoard from "../ui/GameBoard";
+import GamePage from "../ui/GamePage";
 
 
 function page() {
+
     return (
         <div>
-            <GameBoard level="medium" />
+            <GamePage level={'medium'} />
         </div>
     );
 }
