@@ -1,5 +1,6 @@
-import { Input } from 'antd';
-import React, { useState } from 'react';
+import { Input, InputRef } from 'antd';
+import React, { useRef, useState } from 'react';
+import style from './customInput.module.css'
 
 interface NumericInputProps {
     value: string;
@@ -10,28 +11,35 @@ interface NumericInputProps {
 
 const CustomInput = (props: NumericInputProps) => {
 
-    const { value, onChange, correctvalue } = props;
-
-    const [background, setBackground] = useState('inherit')
+  const { value, onChange, correctvalue } = props;
+  const inputRef = useRef<InputRef>(null);
+  const [background, setBackground] = useState('inherit')
     
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value: inputValue } = e.target;
-    
-    const reg = /^-?\d*(\.\d*)?$/;
-    if (reg.test(inputValue) || inputValue === '' || inputValue === '-') {
+
+    const inputValue = e.target.value.slice(-1); 
+
+    const reg = /^\d$/;
+    if (reg.test(inputValue) || inputValue === '') {
       onChange(inputValue);
       const isCorrect = inputValue === correctvalue;
-     
-      if(!isCorrect && inputValue!='')  
-        setBackground('red')
-       
-      else setBackground('inherit')
+
+      if (!isCorrect && inputValue !== '') {
+        setBackground('red');
+      } else {
+        setBackground('inherit');
+      }
     }
   };
 
   const handleChangeActive = () =>{
     setBackground('orange')
+    if (inputRef.current) {
+      inputRef.current.focus(); 
+      inputRef.current.select()
+    }
+    
   }
 
   
@@ -41,21 +49,22 @@ const CustomInput = (props: NumericInputProps) => {
       valueTemp = value.slice(0, -1);
     }
     onChange(valueTemp.replace(/0*(\d+)/, '$1'));
-    setBackground('inherit')
+    if (background !== 'red') setBackground('inherit');
   };
-
 
     return (
        
       <Input
         {...props}
+        ref={inputRef} 
         onChange={handleChange}
         onBlur={handleBlur}
         maxLength={1}
         onClick={handleChangeActive}
         style={{backgroundColor:background, border:'0',textAlign:'center', height:'inherit',
-           borderRadius:'0',caretColor: 'transparent', color:'darkblue', fontWeight:'600'}}
-       
+           borderRadius:'0',caretColor: 'transparent', color:'darkblue', fontWeight:'700', fontSize:'22px',
+        }}
+       className={style.inputStyle}
       />
        
     );

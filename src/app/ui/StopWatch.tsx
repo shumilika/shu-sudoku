@@ -16,29 +16,29 @@ function StopWatch() {
         start,
       } = useStopwatch({ autoStart: true });
 
-      const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
-      const showModal = () => {
+    const showModal = () => {
         setOpen(true);
-      };
+    };
   
-      const hideModal = () => {
+    const hideModal = () => {
           setOpen(false);
-        };
+    };
 
-     const handlePause = () => {
+    const handlePause = () => {
       pause()
       showModal()
-     }
+    }
 
     return (
-         <>
+      <>
       
         <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-      <Button shape="circle" onClick={handlePause}
+        <Button shape="circle" onClick={handlePause}
             icon={<PauseOutlined />}/>
-            <ModalPausePage open={open} hideModal={hideModal} resume={start} />
-    </>
+        <ModalPausePage open={open} hideModal={hideModal} resume={start} />
+      </>
     );
 }
 

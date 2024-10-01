@@ -15,8 +15,7 @@ const CustomCell:React.FC<CustomCellProps> = ({cellValue, correctValue,style}) =
 
     return (
         <Col span={2.67} >
-                <div 
-                 className={style}>
+                <div className={style}>
                   {cellValue === '.' ? <CustomInput 
                   correctvalue={correctValue}
                   value={value}
