@@ -4,13 +4,43 @@
 }
 
 .gridStyle {
-  border: 1px solid #000;
+  border: 1px solid #00000042;
   height: 60px;
   width: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 22px;
   text-align: center;
 }
 
+.cellTop {
+  border-top: 2px solid grey;
+}
+
+.cellLeft {
+  border-left: 2px solid grey;
+}
+
+.cellBottom {
+  border-bottom: 2px solid grey;
+}
+
+.cellRight {
+  border-right: 2px solid grey;
+}
+.outerTop {
+  border-top: 2px solid grey;
+}
+
+.outerLeft {
+  border-left: 2px solid grey;
+}
+
+.outerBottom {
+  border-bottom: 2px solid grey;
+}
+
+.outerRight {
+  border-right: 2px solid grey;
+}

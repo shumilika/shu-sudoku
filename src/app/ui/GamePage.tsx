@@ -22,9 +22,9 @@ const GamePage: React.FC<gameProps> = ({level}) => {
     return (
         <div>
             <p style={{textAlign:'center'}}>{level}   <StopWatch/>   mistakes {countMistakes}/3</p>
-           
-            <GameBoard initialSudoku={initialSudoku} solvedSudoku={solvedSudoku} />
             <CustomRadioButton/>
+            <GameBoard initialSudoku={initialSudoku} solvedSudoku={solvedSudoku} />
+            
             
         </div>
     );

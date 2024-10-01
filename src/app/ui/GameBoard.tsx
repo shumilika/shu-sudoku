@@ -11,6 +11,40 @@ interface SectionProps {
 
 const GameBoard:React.FC<SectionProps> = ({initialSudoku, solvedSudoku}) => {
 
+  const getBorderStyle = (rowIndex: number, colIndex: number) => {
+    const classes = [style.gridStyle];
+
+    
+    if (rowIndex === 0 || rowIndex % 3 === 0) {
+      classes.push(style.cellTop);
+    }
+    if (colIndex === 0 || colIndex % 3 === 0) {
+      classes.push(style.cellLeft);
+    }
+    if (rowIndex === 8 || (rowIndex + 1) % 3 === 0) {
+      classes.push(style.cellBottom);
+    }
+   
+    if (colIndex === 8 || (colIndex + 1) % 3 === 0) {
+      classes.push(style.cellRight);
+    }
+    if (rowIndex === 0) {
+      classes.push(style.outerTop);
+    }
+    if (rowIndex === 8) {
+      classes.push(style.outerBottom);
+    }
+    if (colIndex === 0) {
+      classes.push(style.outerLeft);
+    }
+    if (colIndex === 8) {
+      classes.push(style.outerRight);
+    }
+
+    return classes.join(' ');
+  };
+
+
     return (
         <div className={style.containerStyle}>
         {[...Array(9)].map((_, rowIndex) => (
@@ -24,7 +58,7 @@ const GameBoard:React.FC<SectionProps> = ({initialSudoku, solvedSudoku}) => {
               key={colIndex}
               cellValue={cellValue}   
               correctValue={correctValue} 
-              style={style.gridStyle}        
+              style={getBorderStyle(rowIndex, colIndex)}     
               />
             );
           })}

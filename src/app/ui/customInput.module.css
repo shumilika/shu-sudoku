@@ -1,0 +1,5 @@
+
+.inputStyle::selection {
+    background-color: orange;
+    color: darkblue;
+}
