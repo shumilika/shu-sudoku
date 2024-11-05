@@ -1,12 +1,11 @@
 "use client";
-import React, { useState } from 'react';
-import GameBoard from './GameBoard';
-import CustomRadioButton from './CustomRadioButton';
+import React from 'react';
+import GameBoard from '../../components/ui/GameBoard';
+import CustomRadioButton from '../../components/ui/CustomRadioButton';
 import sudoku from 'sudoku-umd';
-import { Button } from 'antd';
-import { PauseOutlined } from '@ant-design/icons';
-import StopWatch from './StopWatch';
-import ModalPausePage from './ModalPausePage';
+import StopWatch from '../../components/ui/StopWatch';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store'
 
 interface gameProps{
     level: string;
@@ -14,9 +13,9 @@ interface gameProps{
 
 const GamePage: React.FC<gameProps> = ({level}) => {
 
-    const [countMistakes, setCountMistakes] = useState(0)
     const initialSudoku:string = sudoku.generate(level)
     const solvedSudoku:string = sudoku.solve(initialSudoku)
+    const countMistakes = useSelector((state:RootState)=>state.mistakes.count)
    
 
     return (

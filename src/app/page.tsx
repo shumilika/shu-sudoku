@@ -1,23 +1,24 @@
 "use client";
-
+import style from '../styles/page.module.css'
 import { Button } from "antd";
 
 
 
 export default function Home() {
   return (
-    <main>
-      <div>
-       <p>Welcome to the shu sudoku game!</p>
-        </div>
-          <div>
-            <p>Please choose the level</p>
-            <div>
-              <Button href={'/easy'}>easy</Button>
-              <Button  href={'/medium'}>medium</Button>
-              <Button href={'/hard'}>hard</Button>
+    <main className={style.body}>
+      {/* <div> */}
+       <h1>Welcome to the shu sudoku game!</h1>
+       
+        {/* </div> */}
+          {/* <div> */}
+            <h2>Please choose the level</h2>
+            <div className={style.buttons_box}>
+              <Button href={'/easy'} className={style.easy}>easy</Button>
+              <Button  href={'/medium'} className={style.medium}>medium</Button>
+              <Button href={'/hard'} className={style.hard}>hard</Button>
             </div>
-          </div>
+          {/* </div> */}
     </main>
   );
 }

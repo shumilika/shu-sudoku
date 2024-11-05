@@ -1,6 +1,6 @@
 "use client";
 import { Row } from 'antd';
-import style from './gameBoard.module.css'
+import style from '../../styles/gameBoard.module.css'
 import CustomCell from './CustomCell';
 
 

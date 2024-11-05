@@ -1,0 +1,27 @@
+
+.inputStyle::selection {
+    background-color: #E1AFD1;
+    color: #5D4037;
+}
+
+.ant-input .ant-input-outlined .inputStyle{
+    border: none;
+    /* background-color: #FFE6E6;  */
+    text-align: center;
+    height: inherit;
+    border-radius: 0;
+    caret-color: transparent;
+    color: #444; 
+    font-weight: 700;
+    font-size: 22px;
+  }
+  
+  
+  .ant-input:focus {
+    background-color: #E1AFD1; 
+    box-shadow: none;
+  }
+  
+  .ant-input-error {
+    background-color: #D32F2F; 
+  }

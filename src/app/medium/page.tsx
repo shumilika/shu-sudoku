@@ -1,5 +1,5 @@
 "use client";
-import GamePage from "../ui/GamePage";
+import GamePage from "../../features/game/GamePage";
 
 
 function page() {

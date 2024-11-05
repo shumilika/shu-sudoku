@@ -1,6 +1,6 @@
 import { Input, InputRef } from 'antd';
 import React, { useRef, useState } from 'react';
-import style from './customInput.module.css'
+import style from '../../styles/customInput.module.css'
 
 interface NumericInputProps {
     value: string;
@@ -26,7 +26,7 @@ const CustomInput = (props: NumericInputProps) => {
       const isCorrect = inputValue === correctvalue;
 
       if (!isCorrect && inputValue !== '') {
-        setBackground('red');
+        setBackground('#D32F2F');
       } else {
         setBackground('inherit');
       }
@@ -34,7 +34,7 @@ const CustomInput = (props: NumericInputProps) => {
   };
 
   const handleChangeActive = () =>{
-    setBackground('orange')
+    setBackground('#E1AFD1')
     if (inputRef.current) {
       inputRef.current.focus(); 
       inputRef.current.select()
@@ -49,7 +49,7 @@ const CustomInput = (props: NumericInputProps) => {
       valueTemp = value.slice(0, -1);
     }
     onChange(valueTemp.replace(/0*(\d+)/, '$1'));
-    if (background !== 'red') setBackground('inherit');
+    if (background !== '#D32F2F') setBackground('inherit');
   };
 
     return (
@@ -62,7 +62,7 @@ const CustomInput = (props: NumericInputProps) => {
         maxLength={1}
         onClick={handleChangeActive}
         style={{backgroundColor:background, border:'0',textAlign:'center', height:'inherit',
-           borderRadius:'0',caretColor: 'transparent', color:'darkblue', fontWeight:'700', fontSize:'22px',
+           borderRadius:'0',caretColor: 'transparent', color:'#7469B6', fontWeight:'700', fontSize:'22px',
         }}
        className={style.inputStyle}
       />

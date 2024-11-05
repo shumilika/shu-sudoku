@@ -1,0 +1,7 @@
+/*dont work*/
+.ant-modal .ant-modal-content{
+    background-color: #FFE6E6 !important; /* Light pink background */
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+}
