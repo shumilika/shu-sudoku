@@ -2,7 +2,7 @@
 import { RootState } from '@/store';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalGameOverPage from './ModalGameOver';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { resetMistakes } from '@/store/slices/mistakesSlice';
 
 const MistakesCountPage:React.FC = () => {

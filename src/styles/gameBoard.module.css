@@ -3,6 +3,10 @@
   margin: 0 auto; 
 }
 
+.containerStyle p{
+  cursor: default;
+}
+
 .gridStyle {
   border: 1px solid #AD88C6;
   height: 80px;
@@ -10,9 +14,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 26px;
+  font-size: 32px;
   text-align: center;
 }
+
 
 .cellTop {
   border-top: 2px solid #7469B6;

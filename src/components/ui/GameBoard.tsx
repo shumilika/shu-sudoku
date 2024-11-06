@@ -2,14 +2,19 @@
 import { Row } from 'antd';
 import style from '../../styles/gameBoard.module.css'
 import CustomCell from './CustomCell';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { useEffect } from 'react';
 
 
-interface SectionProps {
-    initialSudoku: string;
-    solvedSudoku: string; 
-  }
 
-const GameBoard:React.FC<SectionProps> = ({initialSudoku, solvedSudoku}) => {
+
+const GameBoard:React.FC = () => {
+
+
+  const solutionBoard = useSelector((state:RootState)=>state.sudoku.solutionBoard)
+  const gameBoard = useSelector((state: RootState)=>state.sudoku.gameBoard)
+  const solution = useSelector((state:RootState)=>state.sudoku.solution)
 
   const getBorderStyle = (rowIndex: number, colIndex: number) => {
     const classes = [style.gridStyle];
@@ -42,8 +47,15 @@ const GameBoard:React.FC<SectionProps> = ({initialSudoku, solvedSudoku}) => {
     }
 
     return classes.join(' ');
-  };
+  }
 
+  useEffect(() => {
+    const isBoardComplete = !gameBoard.includes('.') && gameBoard === solution;
+    if (isBoardComplete) {
+        alert("Ура");
+    }
+}, [gameBoard,solution]);
+  
 
     return (
         <div className={style.containerStyle}>
@@ -51,11 +63,12 @@ const GameBoard:React.FC<SectionProps> = ({initialSudoku, solvedSudoku}) => {
           <Row gutter={[0, 0]} key={rowIndex}>
              {[...Array(9)].map((_, colIndex) => {
             const index = rowIndex * 9 + colIndex;
-            const cellValue = initialSudoku[index]
-            const correctValue = solvedSudoku[index]
+            const cellValue = solutionBoard[index]
+            const correctValue = solution[index]
             return (
               <CustomCell
               key={colIndex}
+              index={index}
               cellValue={cellValue}   
               correctValue={correctValue} 
               style={getBorderStyle(rowIndex, colIndex)}     

@@ -1,10 +1,12 @@
 "use client";
-import React from 'react';
+import React, { useEffect } from 'react';
 import GameBoard from '../../components/ui/GameBoard';
 import CustomRadioButton from '../../components/ui/CustomRadioButton';
 import sudoku from 'sudoku-umd';
 import StopWatch from '../../components/ui/StopWatch';
 import MistakesCountPage from '@/components/ui/MistakesCountPage';
+import { useDispatch } from 'react-redux';
+import { generateSolution, setBoards } from '@/store/slices/sudokuSlice';
 
 
 interface gameProps{
@@ -13,14 +15,20 @@ interface gameProps{
 
 const GamePage: React.FC<gameProps> = ({level}) => {
 
-    const initialSudoku:string = sudoku.generate(level)
-    const solvedSudoku:string = sudoku.solve(initialSudoku)
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(setBoards(sudoku.generate(level)))
+        dispatch(generateSolution())
+        
+    },[])
+
    
     return (
         <div>
-            <p style={{textAlign:'center'}}>{level}   <StopWatch/>   <MistakesCountPage/></p>
+            <p style={{textAlign:'center'}}>{level}  </p> <StopWatch/>   <MistakesCountPage/>
             <CustomRadioButton/>
-            <GameBoard initialSudoku={initialSudoku} solvedSudoku={solvedSudoku} />
+            <GameBoard/>
             
             
         </div>

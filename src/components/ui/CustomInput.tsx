@@ -2,19 +2,22 @@
 import { Input, InputRef } from 'antd';
 import React, { useRef, useState } from 'react';
 import style from '../../styles/customInput.module.css'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { incrementMistakes } from '@/store/slices/mistakesSlice';
+import { updateGameBoard } from '@/store/slices/sudokuSlice';
+import { RootState } from '@/store';
 
 interface NumericInputProps {
     value: string;
     onChange: (value: string) => void;
     correctvalue: string;
+    index: number;
   }
   
 
 const CustomInput = (props: NumericInputProps) => {
 
-  const { value, onChange, correctvalue } = props;
+  const { value, onChange, correctvalue, index } = props;
   const inputRef = useRef<InputRef>(null);
   const [background, setBackground] = useState('inherit')
   const dispatch = useDispatch()
@@ -22,8 +25,7 @@ const CustomInput = (props: NumericInputProps) => {
   const handleMistake = () => {
     dispatch(incrementMistakes());
   };
-  
-  
+    
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -42,6 +44,9 @@ const CustomInput = (props: NumericInputProps) => {
       } else {
         setBackground('inherit');
       }
+
+      dispatch(updateGameBoard({ index: index, value: inputValue }))
+
     }
   };
 
@@ -78,7 +83,8 @@ const CustomInput = (props: NumericInputProps) => {
         maxLength={1}
         onClick={handleChangeActive}
         style={{backgroundColor:background, border:'0',textAlign:'center', height:'inherit',
-           borderRadius:'0',caretColor: 'transparent', color:'#7469B6', fontWeight:'700', fontSize:'22px',
+           borderRadius:'0',caretColor: 'transparent', color:'#7469B6', fontWeight:'400', fontSize:'32px',
+           cursor:'pointer'
         }}
        className={style.inputStyle}
       />

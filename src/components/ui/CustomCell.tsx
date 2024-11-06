@@ -7,9 +7,10 @@ interface CustomCellProps {
     cellValue: string; 
     correctValue:string;
     style:string;
+    index: number;
 }
 
-const CustomCell:React.FC<CustomCellProps> = ({cellValue, correctValue,style}) => {
+const CustomCell:React.FC<CustomCellProps> = ({cellValue, correctValue,style,index}) => {
 
   const [value, setValue] = useState('')
 
@@ -21,7 +22,8 @@ const CustomCell:React.FC<CustomCellProps> = ({cellValue, correctValue,style}) =
                   correctvalue={correctValue}
                   value={value}
                   onChange={setValue}
-                  /> : cellValue}
+                  index={index}
+                  /> : <p>{cellValue}</p>}
                 </div>
               </Col>
     );
