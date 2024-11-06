@@ -1,6 +1,9 @@
+"use client";
 import { Input, InputRef } from 'antd';
 import React, { useRef, useState } from 'react';
 import style from '../../styles/customInput.module.css'
+import { useDispatch } from 'react-redux';
+import { incrementMistakes } from '@/store/slices/mistakesSlice';
 
 interface NumericInputProps {
     value: string;
@@ -14,19 +17,28 @@ const CustomInput = (props: NumericInputProps) => {
   const { value, onChange, correctvalue } = props;
   const inputRef = useRef<InputRef>(null);
   const [background, setBackground] = useState('inherit')
+  const dispatch = useDispatch()
     
+  const handleMistake = () => {
+    dispatch(incrementMistakes());
+  };
+  
+  
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
     const inputValue = e.target.value.slice(-1); 
+  
 
     const reg = /^\d$/;
     if (reg.test(inputValue) || inputValue === '') {
       onChange(inputValue);
       const isCorrect = inputValue === correctvalue;
-
+    
+     
       if (!isCorrect && inputValue !== '') {
-        setBackground('#D32F2F');
+        setBackground('#D32F2F')
+        handleMistake()
       } else {
         setBackground('inherit');
       }
@@ -43,13 +55,17 @@ const CustomInput = (props: NumericInputProps) => {
   }
 
   
+  
   const handleBlur = () => {
     let valueTemp = value;
     if (value.charAt(value.length - 1) === '.' || value === '-') {
       valueTemp = value.slice(0, -1);
     }
     onChange(valueTemp.replace(/0*(\d+)/, '$1'));
+    
     if (background !== '#D32F2F') setBackground('inherit');
+
+    
   };
 
     return (
