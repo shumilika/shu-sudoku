@@ -1,4 +1,4 @@
-
+'use client';
 import { configureStore } from '@reduxjs/toolkit';
 import mistakesReducer from './slices/mistakesSlice';
 

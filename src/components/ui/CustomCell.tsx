@@ -1,3 +1,4 @@
+'use client';
 import { Col } from 'antd';
 import React, { useState } from 'react';
 import CustomInput from './CustomInput';
