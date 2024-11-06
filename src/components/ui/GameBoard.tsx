@@ -52,7 +52,9 @@ const GameBoard:React.FC = () => {
   useEffect(() => {
     const isBoardComplete = !gameBoard.includes('.') && gameBoard === solution;
     if (isBoardComplete) {
+       setTimeout(()=>{
         alert("Ура");
+       },500)
     }
 }, [gameBoard,solution]);
   
