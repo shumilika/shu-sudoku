@@ -2,10 +2,9 @@
 import { Input, InputRef } from 'antd';
 import React, { useRef, useState } from 'react';
 import style from '../../styles/customInput.module.css'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { incrementMistakes } from '@/store/slices/mistakesSlice';
 import { updateGameBoard } from '@/store/slices/sudokuSlice';
-import { RootState } from '@/store';
 
 interface NumericInputProps {
     value: string;

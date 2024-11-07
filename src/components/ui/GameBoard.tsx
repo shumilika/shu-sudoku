@@ -4,17 +4,24 @@ import style from '../../styles/gameBoard.module.css'
 import CustomCell from './CustomCell';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
-import { useEffect } from 'react';
-
-
+import { useEffect, useState } from 'react';
+import ModalCongratsPage from './ModalCongratsPage';
 
 
 const GameBoard:React.FC = () => {
 
-
   const solutionBoard = useSelector((state:RootState)=>state.sudoku.solutionBoard)
   const gameBoard = useSelector((state: RootState)=>state.sudoku.gameBoard)
   const solution = useSelector((state:RootState)=>state.sudoku.solution)
+  const [open, setOpen] = useState(false)
+
+  const showModal = () =>{
+    setOpen(true)
+  }
+
+  const hideModal = () =>{
+    setOpen(false)
+  }
 
   const getBorderStyle = (rowIndex: number, colIndex: number) => {
     const classes = [style.gridStyle];
@@ -50,10 +57,10 @@ const GameBoard:React.FC = () => {
   }
 
   useEffect(() => {
-    const isBoardComplete = !gameBoard.includes('.') && gameBoard === solution;
+    const isBoardComplete = gameBoard!=='' && gameBoard === solution;
     if (isBoardComplete) {
        setTimeout(()=>{
-        alert("Ура");
+        showModal()
        },500)
     }
 }, [gameBoard,solution]);
@@ -80,7 +87,7 @@ const GameBoard:React.FC = () => {
           </Row>
         ))}
 
-       
+       <ModalCongratsPage open={open} hideModal={hideModal} />
       </div>
         
     );
