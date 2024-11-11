@@ -1,19 +1,22 @@
 import { Button, Modal } from 'antd';
 import React from 'react';
 import  '../../styles/pausepage.module.css'
+import { useRouter } from 'next/navigation';
+
 
 interface ModalCongratsProps{
     open:boolean;
     hideModal: () => void;
-    // resume: () => void;
 }
 
 const ModalCongratsPage:React.FC<ModalCongratsProps> = ({open, hideModal}) => {
 
-    const handleSubmit = () => {
-        hideModal()
-        // resume()
-    }
+  const router = useRouter()  
+
+  const handleSubmit = () => {
+      hideModal()
+      router.push('/')
+  }
 
     return (
         

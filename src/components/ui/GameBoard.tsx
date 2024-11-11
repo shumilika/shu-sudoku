@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { useEffect, useState } from 'react';
 import ModalCongratsPage from './ModalCongratsPage';
+import CelebrationConfetti from './CelebrationConfetti';
 
 
 const GameBoard:React.FC = () => {
@@ -14,6 +15,7 @@ const GameBoard:React.FC = () => {
   const gameBoard = useSelector((state: RootState)=>state.sudoku.gameBoard)
   const solution = useSelector((state:RootState)=>state.sudoku.solution)
   const [open, setOpen] = useState(false)
+  const [isSalut, setIsSalut] = useState(false)
 
   const showModal = () =>{
     setOpen(true)
@@ -59,6 +61,7 @@ const GameBoard:React.FC = () => {
   useEffect(() => {
     const isBoardComplete = gameBoard!=='' && gameBoard === solution;
     if (isBoardComplete) {
+      setIsSalut(true)
        setTimeout(()=>{
         showModal()
        },500)
@@ -88,6 +91,7 @@ const GameBoard:React.FC = () => {
         ))}
 
        <ModalCongratsPage open={open} hideModal={hideModal} />
+       <CelebrationConfetti show={isSalut}/>
       </div>
         
     );

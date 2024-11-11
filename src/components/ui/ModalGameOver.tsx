@@ -1,18 +1,20 @@
 import { Button, Modal } from 'antd';
 import React from 'react';
 import  '../../styles/pausepage.module.css'
+import { useRouter } from 'next/navigation';
 
 interface ModalGameOverProps{
     open:boolean;
     hideModal: () => void;
-    // resume: () => void;
 }
 
 const ModalGameOverPage:React.FC<ModalGameOverProps> = ({open, hideModal}) => {
 
+  const router = useRouter()
+
     const handleSubmit = () => {
         hideModal()
-        // resume()
+        router.push('/')
     }
 
     return (
