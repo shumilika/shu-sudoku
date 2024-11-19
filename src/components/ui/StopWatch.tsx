@@ -1,8 +1,11 @@
 import { PauseOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
 import ModalPausePage from './ModalPausePage';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@/store';
+import { setTime } from '@/store/slices/paramsSlice';
 
 
 
@@ -17,6 +20,8 @@ function StopWatch() {
       } = useStopwatch({ autoStart: true });
 
     const [open, setOpen] = useState(false);
+    const timeIsPause = useSelector((state:RootState)=>state.params.timeIsPause)
+    const dispatch = useDispatch()
 
     const showModal = () => {
         setOpen(true);
@@ -31,14 +36,31 @@ function StopWatch() {
       showModal()
     }
 
+    useEffect(()=>{
+      if(timeIsPause) {
+        pause()
+        dispatch(setTime(hours+':'+minutes+':'+seconds))
+      }
+    },[timeIsPause])
+
     return (
-      <>
       
-        <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-        <Button shape="circle" onClick={handlePause}
-            icon={<PauseOutlined />}/>
-        <ModalPausePage open={open} hideModal={hideModal} resume={start} />
-      </>
+       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent:'center' }}>
+       <span style={{ fontSize: '1.2rem', color: '#7469b6' }}>
+         {hours}:{minutes}:{seconds}
+       </span>
+       <Button
+         shape="circle"
+         onClick={handlePause}
+         icon={<PauseOutlined />}
+         style={{
+           backgroundColor: '#ad88c6',
+           color: '#fff',
+           border: 'none',
+         }}
+       />
+       <ModalPausePage open={open} hideModal={hideModal} resume={start} />
+     </div>
     );
 }
 

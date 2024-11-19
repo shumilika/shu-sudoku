@@ -2,11 +2,12 @@
 import { Row } from 'antd';
 import style from '../../styles/gameBoard.module.css'
 import CustomCell from './CustomCell';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { useEffect, useState } from 'react';
 import ModalCongratsPage from './ModalCongratsPage';
 import CelebrationConfetti from './CelebrationConfetti';
+import { setPauseTime } from '@/store/slices/paramsSlice';
 
 
 const GameBoard:React.FC = () => {
@@ -16,6 +17,7 @@ const GameBoard:React.FC = () => {
   const solution = useSelector((state:RootState)=>state.sudoku.solution)
   const [open, setOpen] = useState(false)
   const [isSalut, setIsSalut] = useState(false)
+  const dispatch = useDispatch()
 
   const showModal = () =>{
     setOpen(true)
@@ -61,7 +63,9 @@ const GameBoard:React.FC = () => {
   useEffect(() => {
     const isBoardComplete = gameBoard!=='' && gameBoard === solution;
     if (isBoardComplete) {
+      dispatch(setPauseTime(true))
       setIsSalut(true)
+      
        setTimeout(()=>{
         showModal()
        },500)

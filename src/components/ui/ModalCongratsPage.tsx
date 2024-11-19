@@ -2,6 +2,8 @@ import { Button, Modal } from 'antd';
 import React from 'react';
 import  '../../styles/pausepage.module.css'
 import { useRouter } from 'next/navigation';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 
 interface ModalCongratsProps{
@@ -12,14 +14,17 @@ interface ModalCongratsProps{
 const ModalCongratsPage:React.FC<ModalCongratsProps> = ({open, hideModal}) => {
 
   const router = useRouter()  
+  const time = useSelector((state:RootState)=>state.params.time)
+  const level = useSelector((state:RootState)=>state.params.level)
 
   const handleSubmit = () => {
       hideModal()
       router.push('/')
   }
 
+  
+
     return (
-        
       
       <Modal
         title={<p 
@@ -43,10 +48,10 @@ const ModalCongratsPage:React.FC<ModalCongratsProps> = ({open, hideModal}) => {
             </Button>
             
           ]}
-
-       
       >
-        
+
+        <p>You finished an <span style={{fontWeight:'600'}}>{level}</span> puzzle in <span>{time}</span>.</p>
+
       </Modal>
     
     );

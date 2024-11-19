@@ -7,6 +7,8 @@ import StopWatch from '../../components/ui/StopWatch';
 import MistakesCountPage from '@/components/ui/MistakesCountPage';
 import { useDispatch } from 'react-redux';
 import { generateSolution, setBoards } from '@/store/slices/sudokuSlice';
+import { setLevel } from '@/store/slices/paramsSlice';
+import styles from '../../styles/gamePage.module.css'
 
 
 interface gameProps{
@@ -20,18 +22,28 @@ const GamePage: React.FC<gameProps> = ({level}) => {
     useEffect(()=>{
         dispatch(setBoards(sudoku.generate(level)))
         dispatch(generateSolution())
+        dispatch(setLevel(level))
         
     },[])
 
    
     return (
-        <div>
-            <p style={{textAlign:'center'}}>{level}  </p> <StopWatch/>   <MistakesCountPage/>
-            <CustomRadioButton/>
-            <GameBoard/>
-            
-            
-        </div>
+         <div className={styles.container}>
+         <header className={styles.header}>
+           <h1 className={styles.title}>Shu Sudoku</h1>
+           <p className={styles.subtitle}>{level.toUpperCase()} LEVEL</p>
+           <StopWatch />
+         </header>
+   
+         <div className={styles.statusContainer}>
+           <MistakesCountPage />
+           <CustomRadioButton />
+         </div>
+   
+         <main className={styles.main}>
+           <GameBoard />
+         </main>
+       </div>
     );
 };
 

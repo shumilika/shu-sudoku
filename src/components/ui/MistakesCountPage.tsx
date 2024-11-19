@@ -26,11 +26,21 @@ const MistakesCountPage:React.FC = () => {
     if (countMistakes>3 && !open) { showModal() }
 
     return (
-        <>
-            <p>{countMistakes} / 3</p>
-            
-            <ModalGameOverPage open={open} hideModal={hideModal}  />
-        </>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            backgroundColor: '#ffe6e6',
+            padding: '10px 20px',
+            borderRadius: '8px',
+            boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+          }}
+        >
+          <p style={{ margin: 0, fontSize: '1.1rem', color: '#d32f2f' }}>
+            {countMistakes} / 3
+          </p>
+          <ModalGameOverPage open={open} hideModal={hideModal} />
+        </div>
     );
 };
 
