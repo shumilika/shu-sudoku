@@ -36,7 +36,7 @@ const MistakesCountPage:React.FC = () => {
             boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
           }}
         >
-          <p style={{ margin: 0, fontSize: '1.1rem', color: '#d32f2f' }}>
+          <p style={{ margin: 0, fontSize: '1.1rem', color: '#d32f2f', fontWeight:'bold' }}>
             {countMistakes} / 3
           </p>
           <ModalGameOverPage open={open} hideModal={hideModal} />

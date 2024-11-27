@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from 'react';
 import GameBoard from '../../components/ui/GameBoard';
-import CustomRadioButton from '../../components/ui/CustomRadioButton';
 import sudoku from 'sudoku-umd';
 import StopWatch from '../../components/ui/StopWatch';
 import MistakesCountPage from '@/components/ui/MistakesCountPage';
@@ -28,22 +27,21 @@ const GamePage: React.FC<gameProps> = ({level}) => {
 
    
     return (
-         <div className={styles.container}>
-         <header className={styles.header}>
-           <h1 className={styles.title}>Shu Sudoku</h1>
-           <p className={styles.subtitle}>{level.toUpperCase()} LEVEL</p>
-           <StopWatch />
-         </header>
-   
-         <div className={styles.statusContainer}>
-           <MistakesCountPage />
-           <CustomRadioButton />
-         </div>
-   
-         <main className={styles.main}>
-           <GameBoard />
-         </main>
-       </div>
+      <div className={styles.container}>
+      <header className={styles.header}>
+        <h1 className={styles.title}>Shu Sudoku</h1>
+        <p className={styles.subtitle}>{level.toUpperCase()} LEVEL</p>
+      </header>
+
+      <div className={styles.statusContainer}>
+        <StopWatch />
+        <MistakesCountPage />
+      </div>
+
+      <main className={styles.main}>
+        <GameBoard />
+      </main>
+    </div>
     );
 };
 
