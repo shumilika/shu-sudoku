@@ -2,11 +2,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import mistakesReducer from './slices/mistakesSlice';
 import sudokuReducer from './slices/sudokuSlice';
+import paramsReducer from './slices/paramsSlice'
 
 const store = configureStore({
   reducer: {
     mistakes: mistakesReducer,
-    sudoku: sudokuReducer
+    sudoku: sudokuReducer,
+    params: paramsReducer,
   },
 });
 

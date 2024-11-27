@@ -6,6 +6,7 @@ import ModalPausePage from './ModalPausePage';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { setTime } from '@/store/slices/paramsSlice';
+import usePageVisibility from '@/hooks/usePageVisibility';
 
 
 
@@ -36,6 +37,8 @@ function StopWatch() {
       showModal()
     }
 
+    usePageVisibility(handlePause)
+
     useEffect(()=>{
       if(timeIsPause) {
         pause()
@@ -46,7 +49,7 @@ function StopWatch() {
     return (
       
        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent:'center' }}>
-       <span style={{ fontSize: '1.2rem', color: '#7469b6' }}>
+       <span style={{ fontSize: '1.2rem', color: '#7469b6',  }}>
          {hours}:{minutes}:{seconds}
        </span>
        <Button

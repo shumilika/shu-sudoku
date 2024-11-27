@@ -11,7 +11,7 @@
   border: 1px solid #AD88C6;
   height: 80px;
   width: 80px;
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   font-size: 32px;
