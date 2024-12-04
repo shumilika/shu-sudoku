@@ -25,5 +25,8 @@
   .number.visible {
     opacity: 1;
   }
+  .number.colorOnBlur{
+    color: #7569b68e;
+  }
 
   

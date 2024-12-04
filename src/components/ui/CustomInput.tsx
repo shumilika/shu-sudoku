@@ -1,11 +1,11 @@
-"use client";
-import { Input, InputRef } from 'antd';
-import React, { useRef, useState } from 'react';
+"use client"
+import { Input, InputRef } from 'antd'
+import React, { useRef, useState } from 'react'
 import style from '../../styles/customInput.module.css'
-import { useDispatch } from 'react-redux';
-import { incrementMistakes } from '@/store/slices/mistakesSlice';
-import { updateGameBoard } from '@/store/slices/sudokuSlice';
-import CandidateInput from './CandidateInput';
+import { useDispatch } from 'react-redux'
+import { incrementMistakes } from '@/store/slices/mistakesSlice'
+import { updateGameBoard } from '@/store/slices/sudokuSlice'
+import CandidateInput from './CandidateInput'
 
 interface NumericInputProps {
     value: string;
@@ -18,9 +18,10 @@ interface NumericInputProps {
 const CustomInput = (props: NumericInputProps) => {
 
   const { value, onChange, correctvalue, index } = props;
-  const inputRef = useRef<InputRef>(null);
+  const inputRef = useRef<InputRef>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
   const [background, setBackground] = useState('inherit')
-  const [selectedCandidates, setSelectedCandidates] = useState<string[]>([]);
+  const [selectedCandidates, setSelectedCandidates] = useState<string[]>([])
   const [isClick, SetIsClick] = useState(false)
   const dispatch = useDispatch()
     
@@ -30,47 +31,48 @@ const CustomInput = (props: NumericInputProps) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
-    const inputValue = e.target.value.slice(-1); 
-    const reg = /^\d$/;
+    const inputValue = e.target.value.slice(-1)
+    const reg = /^\d$/
 
     if (reg.test(inputValue) || inputValue === '') {
-      onChange(inputValue);
-      const isCorrect = inputValue === correctvalue;
+      onChange(inputValue)
+      const isCorrect = inputValue === correctvalue
     
       if (!isCorrect && inputValue !== '') {
         setBackground('#D32F2F')
         handleMistake()
       } else {
-        setBackground('inherit');
+        setBackground('inherit')
       }
-      inputRef.current?.input?.style.setProperty('cursor', 'default');
+      inputRef.current?.input?.style.setProperty('cursor', 'default')
 
       dispatch(updateGameBoard({ index: index, value: inputValue }))
     }
   }
 
   const handleChangeActive = () =>{
-    setBackground('#E1AFD1')
+    if(background!=='#E1AFD1')setBackground('#E1AFD1')
     SetIsClick(true)
     if (inputRef.current) {
-      inputRef.current.focus(); 
+      inputRef.current.focus()
       inputRef.current.select()
     }
-    inputRef.current?.input?.style.setProperty('cursor', 'pointer');
+    inputRef.current?.input?.style.setProperty('cursor', 'pointer')
   }
 
   
-  const handleBlur = () => {
-    
+  const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
 
-    let valueTemp = value;
-    if (value.charAt(value.length - 1) === '.' || value === '-') {
-      valueTemp = value.slice(0, -1);
+    if (wrapperRef.current && !wrapperRef.current.contains(e.relatedTarget)) {
+      let valueTemp = value
+      if (value.charAt(value.length - 1) === '.' || value === '-') {
+        valueTemp = value.slice(0, -1)
+      }
+      onChange(valueTemp.replace(/0*(\d+)/, '$1'))
+
+      if (background !== '#D32F2F') setBackground('inherit')
+      SetIsClick(false)    
     }
-    onChange(valueTemp.replace(/0*(\d+)/, '$1'));
-
-    if (background !== '#D32F2F') setBackground('inherit');
-    // SetIsClick(false)    
   }
 
  
@@ -85,15 +87,19 @@ const CustomInput = (props: NumericInputProps) => {
 
     return (
        
-      <div className={`${style.wrapper} ${isClick?style.reWrapper:''}`}
+      <div
+        ref={wrapperRef}
+        className={`${style.wrapper} ${isClick?style.reWrapper:''}`}
         onClick={handleChangeActive}
         onBlur={handleBlur}
+        tabIndex={-1}
       >
-        {value === "" && isClick && (
+        {value === "" && (
         
         <CandidateInput
           selectedValues={selectedCandidates}
           onSelect={handleCandidateSelect}
+          isDivActive={isClick}
         />
          
       )}
