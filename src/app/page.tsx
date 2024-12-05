@@ -17,6 +17,7 @@ export default function Home() {
               <Button href={'/easy'} className={style.easy}>easy</Button>
               <Button  href={'/medium'} className={style.medium}>medium</Button>
               <Button href={'/hard'} className={style.hard}>hard</Button>
+              <Button href={'/expert'} className={style.expert}>expert</Button>
             </div>
           {/* </div> */}
     </main>

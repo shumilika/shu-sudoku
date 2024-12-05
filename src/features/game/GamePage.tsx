@@ -30,7 +30,7 @@ const GamePage: React.FC<gameProps> = ({level}) => {
       <div className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.title}>Shu Sudoku</h1>
-        <p className={styles.subtitle}>{level.toUpperCase()} LEVEL</p>
+        <p className={styles.subtitle}>{level==='very-hard'?'EXPERT':level.toUpperCase()} LEVEL</p>
       </header>
 
       <div className={styles.statusContainer}>

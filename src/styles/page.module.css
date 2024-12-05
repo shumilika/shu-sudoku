@@ -61,6 +61,10 @@
   .hard {
     background-color: #7469B6;
   }
+
+  .expert{
+    background-color: #B65A76;
+  }
   
   
    .buttons_box > *:hover{
@@ -76,4 +80,7 @@
   }
   .hard:hover{
     background-color:  #5e56a0 !important;
+  }
+  .expert:hover{
+    background-color: #9c4b65 !important;
   }
