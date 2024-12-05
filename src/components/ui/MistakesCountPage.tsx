@@ -1,4 +1,5 @@
 'use client';
+import style from '../../styles/mistakes.module.css'
 import { RootState } from '@/store';
 import { useDispatch, useSelector } from 'react-redux';
 import ModalGameOverPage from './ModalGameOver';
@@ -11,7 +12,6 @@ const MistakesCountPage:React.FC = () => {
     const [open, setOpen] = useState(false)
     const dispatch = useDispatch()
 
-
     const showModal = () => {
         setOpen(true)
     };
@@ -21,22 +21,11 @@ const MistakesCountPage:React.FC = () => {
           dispatch(resetMistakes())
     };
 
-  
-
     if (countMistakes>3 && !open) { showModal() }
 
     return (
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            backgroundColor: '#ffe6e6',
-            padding: '10px 20px',
-            borderRadius: '8px',
-            boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
-          }}
-        >
-          <p style={{ margin: 0, fontSize: '1.1rem', color: '#d32f2f', fontWeight:'bold' }}>
+        <div className={style.mistakes_box}>
+          <p>
             {countMistakes} / 3
           </p>
           <ModalGameOverPage open={open} hideModal={hideModal} />

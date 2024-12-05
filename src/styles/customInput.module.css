@@ -10,12 +10,12 @@
   z-index: 1 !important;
 }
 
+.wrapper:hover .candidateBox {
+  z-index: 1; 
+}
 
-.inputStyle {
-  position: relative; 
-  z-index: 1;
-  width: 100%;
-  height: 100%;
+.wrapper:hover .inputStyle {
+  z-index: 2; 
 }
 
 .candidateBox {
@@ -26,40 +26,3 @@
   height: 100%;
   z-index: 2; 
 }
-
-.wrapper:hover .candidateBox {
-  z-index: 1; 
-}
-
-
-.wrapper:hover .inputStyle {
-  z-index: 2; 
-}
-
-
-
-.inputStyle::selection {
-    background-color: #E1AFD1;
-    color: #5D4037;
-}
-
-.ant-input .ant-input-outlined .inputStyle{
-    border: none;
-    text-align: center;
-    height: inherit;
-    border-radius: 0;
-    caret-color: transparent;
-    color: #444; 
-    font-weight: 700;
-    font-size: 22px;
-  }
-  
-  
-  .ant-input:focus {
-    background-color: #E1AFD1; 
-    box-shadow: none;
-  }
-  
-  .ant-input-error {
-    background-color: #D32F2F; 
-  }

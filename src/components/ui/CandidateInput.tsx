@@ -1,9 +1,6 @@
 "use client";
-
 import React, { useState } from 'react';
 import style from '../../styles/candidateInput.module.css'
-
-
 
 interface CandidateNumbersProps {
     selectedValues: string[];
@@ -11,7 +8,6 @@ interface CandidateNumbersProps {
     isDivActive: boolean;
   }
   
-
 const CandidateInput:React.FC<CandidateNumbersProps> = ({selectedValues,onSelect,isDivActive}) => {
 
   const plainOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];

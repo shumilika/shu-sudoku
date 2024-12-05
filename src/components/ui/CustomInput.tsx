@@ -60,7 +60,6 @@ const CustomInput = (props: NumericInputProps) => {
     inputRef.current?.input?.style.setProperty('cursor', 'pointer')
   }
 
-  
   const handleBlur = (e: React.FocusEvent<HTMLDivElement>) => {
 
     if (wrapperRef.current && !wrapperRef.current.contains(e.relatedTarget)) {
@@ -74,8 +73,6 @@ const CustomInput = (props: NumericInputProps) => {
       SetIsClick(false)    
     }
   }
-
- 
 
   const handleCandidateSelect = (selectedValue: string) => {
     setSelectedCandidates((prev) =>

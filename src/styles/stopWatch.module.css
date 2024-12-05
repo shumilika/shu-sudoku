@@ -1,3 +1,15 @@
+.watch_box{
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    justify-content: center;
+}
+
+.watch_box .clock{
+    font-size: 1.2rem; 
+    color: #7469b6;
+}
+
 .pause_btn{
     color: #fff;
     background-color: #ad88c6; 

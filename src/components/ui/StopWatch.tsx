@@ -9,9 +9,6 @@ import { RootState } from '@/store';
 import { setTime } from '@/store/slices/paramsSlice';
 import usePageVisibility from '@/hooks/usePageVisibility';
 
-
-
-
 function StopWatch() {
 
     const {
@@ -50,8 +47,8 @@ function StopWatch() {
 
     return (
       
-       <div style={{ display: 'flex', alignItems: 'center', gap: '10px', justifyContent:'center' }}>
-       <span style={{ fontSize: '1.2rem', color: '#7469b6',  }}>
+       <div className={style.watch_box}>
+       <span className={style.clock}>
          {hours}:{minutes}:{seconds}
        </span>
        <Button

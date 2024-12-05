@@ -1,0 +1,15 @@
+.mistakes_box{
+    display: flex;
+    align-items: center;
+    background-color: #ffe6e6;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.mistakes_box p{
+    margin: 0;
+    font-size: 1.1rem; 
+    color: #d32f2f; 
+    font-weight: bold;
+}
