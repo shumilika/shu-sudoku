@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.4.0",
+    "@ant-design/icons": "^5.5.2",
     "@reduxjs/toolkit": "^2.3.0",
     "antd": "^5.20.2",
     "next": "14.2.5",

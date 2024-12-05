@@ -1,4 +1,5 @@
 import { PauseOutlined } from '@ant-design/icons';
+import style from '../../styles/stopWatch.module.css'
 import { Button } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useStopwatch } from 'react-timer-hook';
@@ -7,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { setTime } from '@/store/slices/paramsSlice';
 import usePageVisibility from '@/hooks/usePageVisibility';
+
 
 
 
@@ -56,11 +58,7 @@ function StopWatch() {
          shape="circle"
          onClick={handlePause}
          icon={<PauseOutlined />}
-         style={{
-           backgroundColor: '#ad88c6',
-           color: '#fff',
-           border: 'none',
-         }}
+         className={style.pause_btn}
        />
        <ModalPausePage open={open} hideModal={hideModal} resume={start} />
      </div>

@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux';
 import { generateSolution, setBoards } from '@/store/slices/sudokuSlice';
 import { setLevel } from '@/store/slices/paramsSlice';
 import styles from '../../styles/gamePage.module.css'
+import { Button } from 'antd';
+import { ArrowLeftOutlined } from '@ant-design/icons';
 
 
 interface gameProps{
@@ -29,6 +31,9 @@ const GamePage: React.FC<gameProps> = ({level}) => {
     return (
       <div className={styles.container}>
       <header className={styles.header}>
+      <Button href={'/'} className={styles.backButton} shape='circle' icon={<ArrowLeftOutlined  />}/>
+         
+
         <h1 className={styles.title}>Shu Sudoku</h1>
         <p className={styles.subtitle}>{level==='very-hard'?'EXPERT':level.toUpperCase()} LEVEL</p>
       </header>
