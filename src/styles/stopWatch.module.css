@@ -5,22 +5,42 @@
     justify-content: center;
 }
 
-.watch_box .clock{
+.lightTheme .clock{
     font-size: 1.2rem; 
     color: #7469b6;
 }
 
+.darkTheme .clock{
+    font-size: 1.2rem; 
+    color: #b65a76;
+}
+
 .pause_btn{
-    color: #fff;
-    background-color: #ad88c6; 
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.lightTheme .pause_btn{
+    color: #fff;
+    background-color: #ad88c6; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.pause_btn:hover{
+.darkTheme .pause_btn{
+    background-color: #555555; 
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1)
+}
+
+.lightTheme .pause_btn:hover{
     background-color: #946eb0 !important; 
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     color: #fff !important;
+}
+
+.darkTheme .pause_btn:hover {
+    background-color: #6d6d6d !important; 
+    box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+    color: #ffe6e6 !important; 
 }

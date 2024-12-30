@@ -1,15 +1,30 @@
 .mistakes_box{
     display: flex;
     align-items: center;
-    background-color: #ffe6e6;
     padding: 10px 20px;
     border-radius: 8px;
+}
+
+.lightTheme{
+    background-color: #ffe6e6;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.darkTheme{
+    background-color: #2c2c2c;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
 }
 
 .mistakes_box p{
     margin: 0;
     font-size: 1.1rem; 
-    color: #d32f2f; 
     font-weight: bold;
+}
+
+.lightTheme p{
+    color: #d32f2f; 
+}
+
+.darkTheme p{
+    color: #b02727;
 }

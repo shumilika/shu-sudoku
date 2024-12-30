@@ -8,8 +8,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/store';
 import { setTime } from '@/store/slices/paramsSlice';
 import usePageVisibility from '@/hooks/usePageVisibility';
+import { useTheme } from 'next-themes';
 
 function StopWatch() {
+
+  const {theme} = useTheme()
 
     const {
         seconds,
@@ -47,7 +50,7 @@ function StopWatch() {
 
     return (
       
-       <div className={style.watch_box}>
+       <div className={`${theme === 'light' ? style.lightTheme : style.darkTheme} ${style.watch_box}`}>
        <span className={style.clock}>
          {hours}:{minutes}:{seconds}
        </span>

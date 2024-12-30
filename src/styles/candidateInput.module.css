@@ -18,15 +18,27 @@
     align-items: center;
     font-size: 18px;
     font-weight: bold;
-    color: #7469b6;
     cursor: pointer;
   }
+
+  .lightTheme .number{
+    color: #7469b6;
+  }
+
+  .darkTheme .number{
+    color: #adacb0;
+  }
+
   
   .number.visible {
     opacity: 1;
   }
-  .number.colorOnBlur{
+  .lightTheme .number.colorOnBlur{
     color: #7569b68e;
+  }
+
+  .darkTheme .number.colorOnBlur{
+    color: #b2adce8e;
   }
 
   

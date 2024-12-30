@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { incrementMistakes } from '@/store/slices/mistakesSlice'
 import { updateGameBoard } from '@/store/slices/sudokuSlice'
 import CandidateInput from './CandidateInput'
+import { useTheme } from 'next-themes'
 
 interface NumericInputProps {
     value: string;
@@ -18,12 +19,17 @@ interface NumericInputProps {
 const CustomInput = (props: NumericInputProps) => {
 
   const { value, onChange, correctvalue, index } = props;
+  const {theme} = useTheme()
   const inputRef = useRef<InputRef>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [background, setBackground] = useState('inherit')
   const [selectedCandidates, setSelectedCandidates] = useState<string[]>([])
   const [isClick, SetIsClick] = useState(false)
   const dispatch = useDispatch()
+
+  const errorColor = theme==='light'?'#D32F2F':'#821e1e'
+  const activeColor = theme==='light'?'#E1AFD1':'#6f5667'
+  const inputColor = theme==='light'?'#7469B6':'#4A6FA5'
     
   const handleMistake = () => {
     dispatch(incrementMistakes());
@@ -39,7 +45,7 @@ const CustomInput = (props: NumericInputProps) => {
       const isCorrect = inputValue === correctvalue
     
       if (!isCorrect && inputValue !== '') {
-        setBackground('#D32F2F')
+        setBackground(errorColor)
         handleMistake()
       } else {
         setBackground('inherit')
@@ -51,7 +57,7 @@ const CustomInput = (props: NumericInputProps) => {
   }
 
   const handleChangeActive = () =>{
-    if(background!=='#E1AFD1')setBackground('#E1AFD1')
+    if(background!==activeColor)setBackground(activeColor)
     SetIsClick(true)
     if (inputRef.current) {
       inputRef.current.focus()
@@ -69,7 +75,7 @@ const CustomInput = (props: NumericInputProps) => {
       }
       onChange(valueTemp.replace(/0*(\d+)/, '$1'))
 
-      if (background !== '#D32F2F') setBackground('inherit')
+      if (background !== errorColor) setBackground('inherit')
       SetIsClick(false)    
     }
   }
@@ -106,7 +112,7 @@ const CustomInput = (props: NumericInputProps) => {
         onChange={handleChange}
         maxLength={1}
         style={{backgroundColor:background, border:'0',textAlign:'center', height:'inherit',
-           borderRadius:'0',caretColor: 'transparent', color:'#7469B6', fontWeight:'400', fontSize:'32px',
+           borderRadius:'0',caretColor: 'transparent', color:inputColor, fontWeight:'400', fontSize:'32px',
            cursor:'default'
         }}
        className={style.inputStyle}

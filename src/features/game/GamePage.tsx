@@ -10,6 +10,7 @@ import { setLevel } from '@/store/slices/paramsSlice';
 import styles from '../../styles/gamePage.module.css'
 import { Button } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
+import { useTheme } from 'next-themes';
 
 
 interface gameProps{
@@ -19,6 +20,7 @@ interface gameProps{
 const GamePage: React.FC<gameProps> = ({level}) => {
 
     const dispatch = useDispatch()
+    const {theme} = useTheme()
 
     useEffect(()=>{
         dispatch(setBoards(sudoku.generate(level)))
@@ -29,7 +31,7 @@ const GamePage: React.FC<gameProps> = ({level}) => {
 
    
     return (
-      <div className={styles.container}>
+      <div className={`${theme === 'light' ? styles.lightTheme : styles.darkTheme} ${styles.container}`}>
       <header className={styles.header}>
       <Button href={'/'} className={styles.backButton} shape='circle' icon={<ArrowLeftOutlined  />}/>
          

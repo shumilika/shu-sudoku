@@ -1,12 +1,17 @@
 "use client";
+import { useTheme } from 'next-themes';
 import style from '../styles/page.module.css'
 import { Button } from "antd";
 
 
 
+
 export default function Home() {
+
+  const {theme} = useTheme()
+
   return (
-    <main className={style.body}>
+    <main className={`${theme === 'light' ? style.lightTheme : style.darkTheme} ${style.body}`}>
       <h1>Welcome to the shu sudoku game!</h1>
       <h2>Please choose the level</h2>
       <div className={style.buttons_box}>

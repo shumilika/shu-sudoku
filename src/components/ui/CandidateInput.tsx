@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import style from '../../styles/candidateInput.module.css'
+import { useTheme } from 'next-themes';
 
 interface CandidateNumbersProps {
     selectedValues: string[];
@@ -10,6 +11,7 @@ interface CandidateNumbersProps {
   
 const CandidateInput:React.FC<CandidateNumbersProps> = ({selectedValues,onSelect,isDivActive}) => {
 
+  const {theme} = useTheme()
   const plainOptions = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
   const [hoveredValue, setHoveredValue] = useState<string | null>(null);
 
@@ -24,7 +26,7 @@ const CandidateInput:React.FC<CandidateNumbersProps> = ({selectedValues,onSelect
 
  
  return (
-    <div className={style.candidateBox}>
+    <div className={`${theme === 'light' ? style.lightTheme : style.darkTheme} ${style.candidateBox}`}>
       {plainOptions.map((option) => (
         <span
           key={option}

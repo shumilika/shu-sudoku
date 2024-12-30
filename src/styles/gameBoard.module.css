@@ -6,7 +6,7 @@
   cursor: default;
 }
 
-.gridStyle {
+.gridStyleLight {
   border: 1px solid #AD88C6;
   height: 80px;
   width: 80px;
@@ -16,6 +16,18 @@
   font-size: 32px;
   text-align: center;
 }
+
+.gridStyleDark {
+  border: 1px solid #444;
+  height: 80px;
+  width: 80px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  text-align: center;
+}
+
 
 
 .cellTop {
@@ -47,4 +59,36 @@
 
 .outerRight {
   border-right: 3px solid #444;
+}
+
+
+.cellTopDark {
+  border-top: 2px solid #575757;
+}
+
+.cellLeftDark {
+  border-left: 2px solid #575757;
+}
+
+.cellBottomDark {
+  border-bottom: 2px solid #575757;
+}
+
+.cellRightDark {
+  border-right: 2px solid #575757;
+}
+.outerTopDark {
+  border-top: 3px solid #757575;
+}
+
+.outerLeftDark {
+  border-left: 3px solid #757575;
+}
+
+.outerBottomDark {
+  border-bottom: 3px solid #757575;
+}
+
+.outerRightDark {
+  border-right: 3px solid #757575;
 }

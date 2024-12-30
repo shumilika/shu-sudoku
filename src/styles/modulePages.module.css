@@ -1,0 +1,55 @@
+
+.title_module{
+    text-align: center;  
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.lightTitle{
+    color: #AD88C6;
+}
+
+.darkTitle{
+    color: #d197ba;
+}
+
+.btn_light{
+    background-color: #AD88C6; 
+    border-color: #AD88C6;
+    font-weight: bold;
+}
+.btn_dark{
+    background-color: #d197ba; 
+    border-color: #d197ba;
+    font-weight: bold;
+}
+
+.btn_light:hover{
+    background-color: #914EAD !important;
+    border-color: #914EAD;
+}
+
+.btn_dark:hover{
+    background-color: #b65a76 !important;
+    border-color: #b65a76;
+}
+
+.level_light{
+    color: #333;
+}
+
+.level_light span{
+    font-weight: 600;
+    color: #AD88C6; 
+}
+
+.level_dark{
+    color: #fff;
+}
+
+.level_dark span{
+    font-weight: 600;
+    color: #b65a76; 
+}
+

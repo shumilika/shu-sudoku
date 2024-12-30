@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.css";
-import { Provider } from "react-redux";
 import Providers from "@/Providers";
-import store from '../store';
+import ThemeToggleSwitcher from "@/app/ThemeSwitcher";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        
         <Providers >
+        <ThemeToggleSwitcher/>
           {children}
         </Providers>
         </body>
